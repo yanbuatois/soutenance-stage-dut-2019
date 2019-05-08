@@ -27,16 +27,32 @@ module.exports = grunt => {
 			files: [ 'test/*.html' ]
 		},
 
-		uglify: {
+		babel: {
 			options: {
-				banner: '<%= meta.banner %>\n',
-				ie8: true
+				sourceMap: true,
+				minified: true
 			},
-			build: {
-				src: 'js/reveal.js',
-				dest: 'js/reveal.min.js'
+			dist: {
+				files: [{
+					expand: true,
+					cwd: 'js/',
+					src: ['**/*.js'],
+					dest: 'js/',
+					ext: '.min.js',
+					extDot: 'first'
+				}]
 			}
 		},
+
+		// uglify: {
+		// 	options: {
+		// 		banner: '<%= meta.banner %>\n'
+		// 	},
+		// 	build: {
+		// 		src: 'js/reveal.js',
+		// 		dest: 'js/reveal.min.js'
+		// 	}
+		// },
 
 		sass: {
 			options: {
@@ -166,7 +182,7 @@ module.exports = grunt => {
 	grunt.registerTask( 'default', [ 'css', 'js' ] );
 
 	// JS task
-	grunt.registerTask( 'js', [ 'jshint', 'uglify', 'qunit' ] );
+	grunt.registerTask( 'js', [ 'jshint', 'babel', 'qunit' ] );
 
 	// Theme CSS
 	grunt.registerTask( 'css-themes', [ 'sass:themes' ] );
