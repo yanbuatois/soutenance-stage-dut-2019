@@ -17,7 +17,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/hakimel/reveal.js.git"
+    "url": "git://github.com/yanbuatois/soutenance-stage-dut-2019.git"
   },
   "engines": {
     "node": ">=9.0.0"
