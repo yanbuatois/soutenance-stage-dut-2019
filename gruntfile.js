@@ -36,7 +36,7 @@ module.exports = grunt => {
 				files: [{
 					expand: true,
 					cwd: 'js/',
-					src: ['**/*.js'],
+					src: ['**/*.js', '!reveal*.js*'],
 					dest: 'js/',
 					ext: '.min.js',
 					extDot: 'first'
@@ -44,15 +44,16 @@ module.exports = grunt => {
 			}
 		},
 
-		// uglify: {
-		// 	options: {
-		// 		banner: '<%= meta.banner %>\n'
-		// 	},
-		// 	build: {
-		// 		src: 'js/reveal.js',
-		// 		dest: 'js/reveal.min.js'
-		// 	}
-		// },
+		uglify: {
+			options: {
+				banner: '<%= meta.banner %>\n',
+				sourceMap: true,
+			},
+			build: {
+				src: 'js/reveal.js',
+				dest: 'js/reveal.min.js'
+			}
+		},
 
 		sass: {
 			options: {
@@ -60,8 +61,13 @@ module.exports = grunt => {
 				sourceMap: false
 			},
 			core: {
-				src: 'css/reveal.scss',
-				dest: 'css/reveal.css'
+				files: [{
+					expand: true,
+					cwd: 'css',
+					src: ['*.scss', 'mine/*.scss'],
+					dest: 'css/',
+					ext: '.css',
+				}]
 			},
 			themes: {
 				expand: true,
@@ -74,17 +80,21 @@ module.exports = grunt => {
 
 		autoprefixer: {
 			core: {
-				src: 'css/reveal.css'
+				src: ['css/**/*.css', '!css/theme/**/*', '!css/print/**/*', '!**/*.min*']
 			}
 		},
 
 		cssmin: {
 			options: {
-				compatibility: 'ie9'
+				compatibility: 'ie9',
+				sourceMap: true,
 			},
 			compress: {
-				src: 'css/reveal.css',
-				dest: 'css/reveal.min.css'
+				expand: true,
+				cwd: 'css',
+				src: ['**/*.css', '!theme/**/*', '!print/**/*', '!**/*.min*'],
+				dest: 'css',
+				ext: '.min.css',
 			}
 		},
 
@@ -145,7 +155,7 @@ module.exports = grunt => {
 
 		watch: {
 			js: {
-				files: [ 'gruntfile.js', 'js/reveal.js' ],
+				files: [ 'gruntfile.js', 'js/*.js', '!**/*.min*' ],
 				tasks: 'js'
 			},
 			theme: {
@@ -158,7 +168,7 @@ module.exports = grunt => {
 				tasks: 'css-themes'
 			},
 			css: {
-				files: [ 'css/reveal.scss' ],
+				files: [ 'css/**/*.scss' ],
 				tasks: 'css-core'
 			},
 			test: {
@@ -182,7 +192,7 @@ module.exports = grunt => {
 	grunt.registerTask( 'default', [ 'css', 'js' ] );
 
 	// JS task
-	grunt.registerTask( 'js', [ 'jshint', 'babel', 'qunit' ] );
+	grunt.registerTask( 'js', [ 'jshint', 'babel', 'uglify', 'qunit' ] );
 
 	// Theme CSS
 	grunt.registerTask( 'css-themes', [ 'sass:themes' ] );

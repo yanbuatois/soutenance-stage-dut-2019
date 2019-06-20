@@ -1,55 +1,87 @@
 <!doctype html>
 <html lang="fr">
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<title>reveal.js</title>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<link rel="stylesheet" href="css/reset.css">
-		<link rel="stylesheet" href="css/reveal.css">
-		<link rel="stylesheet" href="css/theme/black.css">
+    <title>Soutenance de stage 2019</title>
 
-		<!-- Theme used for syntax highlighting of code -->
-		<link rel="stylesheet" href="lib/css/monokai.css">
+    <link rel="stylesheet" type="text/css" href="css/reset.min.css">
+    <link rel="stylesheet" type="text/css" href="css/reveal.min.css">
+    <link rel="stylesheet" type="text/css" href="css/theme/sky.css">
+    <link rel="stylesheet" type="text/css" href="css/mine/main.min.css">
 
-		<!-- Printing and PDF exports -->
-		<script>
-			var link = document.createElement( 'link' );
-			link.rel = 'stylesheet';
-			link.type = 'text/css';
-			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
-			document.getElementsByTagName( 'head' )[0].appendChild( link );
-		</script>
-	</head>
-	<body>
-		<div class="reveal">
-			<div class="slides">
-				<section>Slide 1</section>
-				<section>Slide 2</section>
-			</div>
-		</div>
+    <!-- Theme used for syntax highlighting of code -->
+    <link rel="stylesheet" href="lib/css/monokai.css">
 
-		<script src="js/reveal.js"></script>
+    <!-- Printing and PDF exports -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ? 'css/print/pdf.css' : 'css/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+</head>
 
-		<script>
-			// More info about config & dependencies:
-			// - https://github.com/hakimel/reveal.js#configuration
-			// - https://github.com/hakimel/reveal.js#dependencies
-			Reveal.initialize({
-				controlsTutorial: false,
-				slideNumber: true,
-				hash: true,
-				fragmentInURL: true,
-				pdfMaxPagesPerSlide: 1,
-				dependencies: [
-					{ src: 'plugin/markdown/marked.js' },
-					{ src: 'plugin/markdown/markdown.js' },
-					{ src: 'plugin/notes/notes.js', async: true },
-					{ src: 'plugin/highlight/highlight.js', async: true },
-					{ src: 'plugin/zoom-js/zoom.js', async: true }
-				]
-			});
-		</script>
-	</body>
+<body>
+    <div class="reveal">
+        <div class="slides">
+            <section data-state="info">
+                <h1>Soutenance de stage</h1>
+                <h2>Yan Buatois</h2>
+            </section>
+
+            <section>
+                <h1 class="left">Acute Games</h1>
+                <ul>
+                    <li class="fragment fade-in-then-semi-out">Entreprise fondée en 2006 à Paris</li>
+                    <li class="fragment fade-in-then-semi-out">Maintenant basée à Carcassonne</li>
+                    <li class="fragment fade-in-then-semi-out">Gérée par deux associés : <ul>
+                        <li>Florian MONTANI</li>
+                        <li>Arnaud MOREAU</li>
+                    </ul></li>
+                    <li class="fragment fade-in">Spécialisée dans l'édition de jeux vidéo : 
+                        <ul>
+                            <li>Urban Rivals</li>
+                            <li>Fantasy Rivals</li>
+                            <li>Orchid Lust</li>
+                        </ul>
+                    </li>
+                </ul>
+            </section>
+        </div>
+    </div>
+
+    <script src="js/reveal.min.js"></script>
+
+    <script>
+        // More info about config & dependencies:
+        // - https://github.com/hakimel/reveal.js#configuration
+        // - https://github.com/hakimel/reveal.js#dependencies
+        Reveal.initialize({
+            controlsTutorial: false,
+            slideNumber: 'c',
+            hash: true,
+            fragmentInURL: true,
+            pdfMaxPagesPerSlide: 1,
+            dependencies: [{
+                src: 'plugin/markdown/marked.js'
+            }, {
+                src: 'plugin/markdown/markdown.js'
+            }, {
+                src: 'plugin/notes/notes.js',
+                async: true
+            }, {
+                src: 'plugin/highlight/highlight.js',
+                async: true
+            }, {
+                src: 'plugin/zoom-js/zoom.js',
+                async: true
+            }]
+        });
+    </script>
+</body>
+
 </html>

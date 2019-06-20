@@ -6,7 +6,7 @@
  * Copyright (C) 2019 Hakim El Hattab, http://hakim.se
  */
 (function( root, factory ) {
-	if( typeof define === 'function' && define.amd ) {
+	if( typeof define === 'function' && define.amd && root ) {
 		// AMD. Register as an anonymous module.
 		define( function() {
 			root.Reveal = factory();
@@ -15,7 +15,7 @@
 	} else if( typeof exports === 'object' ) {
 		// Node. Does not work with strict CommonJS.
 		module.exports = factory();
-	} else {
+	} else if (root) {
 		// Browser globals.
 		root.Reveal = factory();
 	}
